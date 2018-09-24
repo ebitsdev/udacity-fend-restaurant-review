@@ -21,17 +21,22 @@ body {
 * Style restaurant listing
 */
 #restaurants-list{
-
   list-style: none;
   margin-left: -2.3em;
   display: grid;
-  grid-template-columns: repeat(1, minmax(160px, 1fr));
+  grid-template-columns: repeat(2, minmax(250px, 1fr));
   grid-column-gap: 1em;
   .restaurant-img {
     display: block;
     width: 100%;
   }
 }
-#neighborhoods-select{
-  // margin-left: 1em;
+/*
+Handle screen smaller than 320px)
+*/
+
+@media only screen and (max-width: 568px){
+  #restaurants-list{
+    grid-template-columns: repeat(1, minmax(200px, 1fr));
+  }
 }

@@ -151,7 +151,15 @@ fillRestaurantsHTML = (restaurants = self.restaurants) => {
   restaurants.forEach(restaurant => {
     ul.append(createRestaurantHTML(restaurant));
   });
+
   addMarkersToMap();
+  const mapElements = document.querySelectorAll('.leaflet-control-zoom-in, img.leaflet-marker-icon.leaflet-zoom-animated.leaflet-interactive, .leaflet-control-zoom-out, .leaflet-control-attribution > a');
+  // Exclude all map elements from the tabindex order
+  mapElements.forEach(function(el){
+    // console.log(el);
+    el.tabIndex = '-1';
+  });
+
 }
 
 /**
@@ -181,7 +189,7 @@ createRestaurantHTML = (restaurant) => {
   const more = document.createElement('a');
   more.innerHTML = 'View Details';
   more.href = DBHelper.urlForRestaurant(restaurant);
-  more.tabIndex = restaurant.id+2;
+  // more.tabIndex = '0';
   li.append(more)
 
   return li

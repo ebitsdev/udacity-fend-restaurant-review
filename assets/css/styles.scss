@@ -25,15 +25,22 @@ body {
   margin-left: -2.3em;
   display: grid;
   grid-template-columns: repeat(2, minmax(284px, 1fr));
-  grid-column-gap: 1em;
+  grid-gap: 1em;
+  li {
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
+    background-color: #d3d3d3;
+  }
   .restaurant-img {
     display: block;
     width: 100%;
-    box-shadow: rgba(0, 0, 0, 0.295);
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
+  }
+  h1, p{
+    padding-left: 1rem;
   }
   li a {
     background-color: #ffa500;
-    border-bottom: 3px solid #eee;
+    border-bottom: 3px solid #d3d3d3;
     color: #2B2B2B;
     display: inline-block;
     font-size: 10pt;

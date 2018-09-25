@@ -32,9 +32,9 @@ body {
     box-shadow: rgba(0, 0, 0, 0.295);
   }
   li a {
-    background-color: orange;
+    background-color: #ffa500;
     border-bottom: 3px solid #eee;
-    color: #fff;
+    color: #2B2B2B;
     display: inline-block;
     font-size: 10pt;
     margin: 15px 0 0;
@@ -44,7 +44,7 @@ body {
     text-transform: uppercase;
   }
   h1 {
-    color: #f18200;
+    color: #7A5000;
     font-family: Arial,sans-serif;
     font-size: 14pt;
     font-weight: 200;
@@ -93,7 +93,9 @@ Handle screen smaller than 568px)
   color: #0275d8;
   text-decoration: none;
 }
-
+.leaflet-container a{
+  color: #005475 !important;
+}
 /* Add a color on mouse-over */
 #breadcrumb li a:hover {
   color: #01447e;
@@ -104,7 +106,7 @@ Handle screen smaller than 568px)
 .filter-options {
   width: 100%;
   height: 100%;
-  background-color: #3397DB;
+  background-color: #185D8C;
   align-items: center;
 }
 .filter-options h2 {
@@ -113,6 +115,7 @@ Handle screen smaller than 568px)
   font-weight: normal;
   line-height: 1;
   margin: 0 20px;
+  padding-top: 0.5rem;
 }
 .filter-options select {
   background-color: white;
@@ -148,12 +151,15 @@ nav h1 a {
 }
 #footer {
   background-color: #444;
-  color: #aaa;
+  color: #fff;
   font-size: 8pt;
   letter-spacing: 1px;
   padding: 25px;
   text-align: center;
   text-transform: uppercase;
+  a {
+    color: #fff;
+  }
 }
 .inside #footer {
   // bottom: 0;

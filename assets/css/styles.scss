@@ -102,8 +102,8 @@ Handle screen smaller than 568px)
 
 /* ====================== Restaurant Filtering ====================== */
 .filter-options {
-  // width: 100%;
-  // height: 50px;
+  width: 100%;
+  height: 100%;
   background-color: #3397DB;
   align-items: center;
 }
@@ -159,4 +159,13 @@ nav h1 a {
   // bottom: 0;
   position: absolute;
   width: 100%;
+}
+#restaurant-name {
+  padding-top: .6em;
+}
+ul#breadcrumb{
+  padding-top: .6rem;
+}
+#reviews-container > h2{
+  padding-top: .5rem
 }

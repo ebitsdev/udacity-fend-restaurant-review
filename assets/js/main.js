@@ -160,7 +160,7 @@ fillRestaurantsHTML = (restaurants = self.restaurants) => {
     el.tabIndex = '-1';
   });
 
-}
+};
 
 /**
  * Create restaurant HTML.

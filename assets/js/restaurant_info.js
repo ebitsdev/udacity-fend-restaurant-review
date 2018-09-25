@@ -30,7 +30,9 @@ initMap = () => {
         id: 'mapbox.streets'
       }).addTo(newMap);
       fillBreadcrumb();
+
       DBHelper.mapMarkerForRestaurant(self.restaurant, self.newMap);
+
     }
   });
 }
@@ -56,7 +58,8 @@ initMap = () => {
  */
 fetchRestaurantFromURL = (callback) => {
   if (self.restaurant) { // restaurant already fetched!
-    callback(null, self.restaurant)
+    callback(null, self.restaurant);
+
     return;
   }
   const id = getParameterByName('id');
@@ -89,7 +92,7 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
   const image = document.getElementById('restaurant-img');
   image.className = 'restaurant-img'
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
-  image.alt = "Testing only";
+  image.alt = restaurant.name;
   const cuisine = document.getElementById('restaurant-cuisine');
   cuisine.innerHTML = restaurant.cuisine_type;
 
@@ -97,9 +100,10 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
   if (restaurant.operating_hours) {
     fillRestaurantHoursHTML();
   }
+
   // fill reviews
   fillReviewsHTML();
-}
+};
 
 /**
  * Create restaurant operating hours HTML table and add it to the webpage.
@@ -165,7 +169,13 @@ createReviewHTML = (review) => {
   li.appendChild(comments);
 
   return li;
-}
+};
+// const mapElements = document.querySelectorAll('.leaflet-control-zoom-in, img.leaflet-marker-icon.leaflet-zoom-animated.leaflet-interactive, .leaflet-control-zoom-out, .leaflet-control-attribution > a');
+// // Exclude all map elements from the tabindex order
+// mapElements.forEach(function(el){
+//   console.log('el');
+//   el.tabIndex = '-1';
+// });
 
 /**
  * Add restaurant name to the breadcrumb navigation menu
@@ -174,8 +184,15 @@ fillBreadcrumb = (restaurant=self.restaurant) => {
   const breadcrumb = document.getElementById('breadcrumb');
   const li = document.createElement('li');
   li.innerHTML = restaurant.name;
+  const mapElements = document.querySelectorAll('.leaflet-control-zoom-in, img.leaflet-marker-icon.leaflet-zoom-animated.leaflet-interactive, .leaflet-control-zoom-out, .leaflet-control-attribution > a');
+  // Exclude all map elements from the tabindex order
+  mapElements.forEach(function(el){
+    // console.log(el);
+    el.tabIndex = '-1';
+  });
   breadcrumb.appendChild(li);
-}
+
+};
 
 /**
  * Get a parameter by name from page URL.

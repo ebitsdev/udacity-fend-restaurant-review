@@ -73,7 +73,9 @@ Handle screen smaller than 568px)
     grid-template-columns: repeat(1, minmax(200px, 1fr));
   }
 }
-
+#restaurant-img {
+  width: 100%;
+}
 /* Display list items side by side */
 #breadcrumb li {
   display: inline;
@@ -154,7 +156,7 @@ nav h1 a {
   text-transform: uppercase;
 }
 .inside #footer {
-  bottom: 0;
+  // bottom: 0;
   position: absolute;
-  width: 50%;
+  width: 100%;
 }

@@ -3,7 +3,14 @@ let restaurants,
   cuisines
 var newMap
 var markers = []
-
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', ()=>{
+    navigator.serviceWorker
+    .register('./sw.js')
+    .then(reg => console.log('It works', reg))
+    .catch(err => console.log('It does not work', err));
+  });
+}
 /**
  * Fetch neighborhoods and cuisines as soon as the page is loaded.
  */
@@ -220,3 +227,6 @@ addMarkersToMap = (restaurants = self.restaurants) => {
     self.markers.push(marker);
   });
 } */
+/**
+ * Register the service worker to cache our site resources
+ */

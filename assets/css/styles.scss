@@ -65,8 +65,68 @@ body {
     font-size: 11pt;
   }
 }
-#reviews-list li p {
+#restaurant-container{
+  #restaurant-cuisine{
+    color: brown;
+    text-transform: uppercase;
+  }
+  #restaurant-address{
+    font-style: italic;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+}
+#reviews-container {
+  margin-top: 1rem;
+  box-shadow: -15px 0px 10px -15px #111;
+  background-color: lightgrey;
+  h2 {
+    padding-top: 10px;
+    padding-left: 18px;
+}
+}
+#reviews-list {
+  margin-left: -35px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1em;
+  list-style: none;
+
+  li {
+    p:first-of-type{
+      color: brown;
+      text-transform: uppercase;
+    }
+    p:nth-child(2){
+      font-style: italic;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    padding: 15px;
+    margin-block-start: 0.2em !important;
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
+    background-color: #d3d3d3;
+  }
+  li p {
   margin: 0 0 10px;
+  }
+}
+// Manage grid layout for restaurant review content
+@media only screen and (max-width: 951px){
+  #reviews-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1em;
+    list-style: none;
+  }
+}
+@media only screen and (max-width: 568px){
+  #reviews-list {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 1em;
+    list-style: none;
+  }
 }
 #restaurant-hours td {
   color: #666;
@@ -180,7 +240,4 @@ nav h1 a {
 }
 ul#breadcrumb{
   padding-top: .6rem;
-}
-#reviews-container > h2{
-  padding-top: .5rem
 }

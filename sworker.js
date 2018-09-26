@@ -1,8 +1,8 @@
-const cacheName = 'v1';
+const cacheVersion = 'v1';
 /**
  * Install the service worker
  */
-const cachedElements = [
+const cachedAssets = [
     './index.html',
     './restaurant.html',
     './assets/js/main.js',
@@ -22,14 +22,12 @@ const cachedElements = [
     './assets/img/10.jpg'
 ];
 self.addEventListener('install', function (ev) {
-    console.log('Service Worker installed');
     // Handle the cached objects
     ev.waitUntil(
         caches
-        .open(cacheName)
+        .open(cacheVersion)
         .then(cache => {
-            console.log('Caching assets');
-            cache.addAll(cachedElements)
+            cache.addAll(cachedAssets)
                 .then(() => self.skipWaiting());
         }));
 });
@@ -42,20 +40,37 @@ self.addEventListener('activate', function (ev) {
     // Removed unwanted caches
     ev.waitUntil(
         caches.keys()
-        .then(cacheName => {
+        .then(cacheVersion => {
             return Promise.map(cache => {
-                if (cache !== cacheName) {
-                    // Delete all other caches that we are not dealing with at the moment
+                if (cache !== cacheVersion) {
+                    // Delete unwanted cached versions in our cache storage
                     return caches.delete(cache);
                 }
             });
         })
     );
 });
-// Show offline files
+// Get the site assets and cache for offline availability
+// self.addEventListener('fetch', ev => {
+//     ev.respondWith(
+//         fetch(ev.request).catch(() => caches.match(ev.request)));
+// });
 self.addEventListener('fetch', ev => {
-    // check if there is network or not
-
+    console.log('Fetchind response data');
     ev.respondWith(
-        fetch(ev.request).catch(() => caches.match(ev.request)));
-});
+        fetch(ev.request)
+        // Cache the response data instead of caching only some of the files
+        .then(resData => {
+            // We need to clone the resData
+            const resDataClone = resData.clone();
+            caches
+            .open(cacheVersion)
+            .then(cache => {
+                // Adding the resData to the cache
+                cache.put(ev.request, resDataClone);
+            });
+            return resData;
+        })
+        .catch(error = caches.match(ev.request).then(resData => resData))
+    );
+})

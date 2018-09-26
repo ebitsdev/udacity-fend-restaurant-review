@@ -6,7 +6,7 @@ var markers = []
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', ()=>{
     navigator.serviceWorker
-    .register('./sw.js')
+    .register('./sworker.js')
     .then(reg => console.log('It works'))
     .catch(err => console.log('It does not work', err));
   });

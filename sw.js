@@ -1,31 +1,38 @@
-const version = 'v1.0';
+const cacheName = 'v1';
 /**
  * Install the service worker
  */
 const cachedElements = [
-    './index.html',
-    './assets/js.js',
-    './assets/styles.css',
-    './retaurant.html',
-    './1.jpg',
-    './2.jpg',
-    './3.jpg',
-    './4.jpg',
-    './6.jpg',
-    './7.2jpg',
-    './8.2jpg',
-    './9.2jpg',
-    './10.2jpg'
-
+    '/index.html',
+    '/restaurant.html',
+    '/assets/main.js',
+    '/assets/styles.css',
+    '/assets/css/webfonts.scss',
+    '/restaurant.html',
+    '/assets/js/dbhelper.js',
+    '/assets/img/1.jpg',
+    '/assets/img/2.jpg',
+    '/assets/img/3.jpg',
+    '/assets/img/4.jpg',
+    '/assets/img/5.jpg',
+    '/assets/img/6.jpg',
+    '/assets/img/7.jpg',
+    '/assets/img/8.jpg',
+    '/assets/img/9.jpg',
+    '/assets/img/10.jpg'
 ];
 self.addEventListener('install', function(e) {
     console.log('Service Worker installed');
-    e.waitUntil();
+    // Handle the cached objects
+    e.waitUntil(
     caches
     .open(cacheName)
-    .then (cache =>{
+    .then (cache => {
         console.log('Service worker installed');
-    })
+        cache.addAll(cachedElements)
+    .then(() =>
+        self.skipWaiting())
+    }));
 });
 
 /**

@@ -9,7 +9,7 @@ github: ebitsdev
 linkedin: https://www.linkedin.com/in/emmanuelbamba/
 gitrepo: udacity-fend-restaurant-review
 host: localhost
-port: 4020
+port: 8080 #Use this port for the service worker to properly function on localhost
 
 # Build settings
 markdown: kramdown

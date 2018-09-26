@@ -1,4 +1,4 @@
-const version = 'alpha';
+const version = 'v1.0';
 /**
  * Install the service worker
  */
@@ -19,12 +19,12 @@ const cachedElements = [
 
 ];
 self.addEventListener('install', function(e) {
-    console.log(e);
+    console.log('Service Worker installed');
     e.waitUntil();
     caches
     .open(cacheName)
     .then (cache =>{
-        console.log(cachedElements);
+        console.log('Service worker installed');
     })
 });
 

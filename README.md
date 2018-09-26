@@ -8,11 +8,10 @@ We cover the following areas in this project, which is part of the Udacity Front
 
 ### Areas covered
 
-1. `Use MAPBox API to load the restaurant locations on the map`
+1. `Use MapBox API to load the restaurant locations on the map`
 2. `Make the provide base fully responsive`
 3. `Make the web application accessible following WCAG recommendations`
 4. `Use Service Worker to cache the site content for visitors when they are offline`
-5. `Use MAPBox API to load the restaurant locations on the map`
 
 ### How to run this project
 

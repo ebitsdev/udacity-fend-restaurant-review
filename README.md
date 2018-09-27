@@ -16,7 +16,7 @@ We cover the following areas in this project, which is part of the Udacity Front
 ### How to run this project
 
 - Clone this repository to your local environment or simply download the entire repository into a folder.
-- Launch the project by opening index.html from the _site folder at the root of the project
+- Launch the web application by opening index.html from the _site folder at the root of the project
 - Here is a live version of the completed project: [Udacity FEND Restaurant Reviews Project](https://ebitsdev.github.io/udacity-fend-restaurant-review/)
 
 ## How to contribute to this project

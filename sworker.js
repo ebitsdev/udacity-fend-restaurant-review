@@ -1,10 +1,27 @@
 const cacheVersion = 'v1';
 /**
  * Install the service worker
+ * Inspiration from: https://developers.google.com/web/fundamentals/primers/service-workers/
  * Inspiration from: https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers
  */
 const cachedAssets = [
-
+    './index.html',
+    './restaurant.html',
+    './assets/js/main.js',
+    './assets/css/styles.css',
+    './assets/css/webfonts.css',
+    './assets/js/dbhelper.js',
+    './assets/js/restaurant_info.js',
+    './assets/img/1.jpg',
+    './assets/img/2.jpg',
+    './assets/img/3.jpg',
+    './assets/img/4.jpg',
+    './assets/img/5.jpg',
+    './assets/img/6.jpg',
+    './assets/img/7.jpg',
+    './assets/img/8.jpg',
+    './assets/img/9.jpg',
+    './assets/img/10.jpg'
 ];
 
 self.addEventListener('install', function (ev) {
@@ -45,6 +62,7 @@ self.addEventListener('fetch', ev => {
             if (resData){
                 return resData;
             }
+            // Clone the request
             const requestClone = ev.request.clone();
 
             return fetch(requestClone)

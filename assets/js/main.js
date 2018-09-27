@@ -7,8 +7,7 @@ if ('serviceWorker' in navigator) {
   window.addEventListener('load', ()=>{
     navigator.serviceWorker
     .register('./sworker.js')
-    .then(reg => console.log('It works'))
-    .catch(err => console.log('It does not work', err));
+    .catch(error => console.log(error));
   });
 }
 /**

@@ -3,6 +3,8 @@ let restaurants,
   cuisines
 var newMap
 var markers = []
+
+// Register the service for offline caching
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', ()=>{
     navigator.serviceWorker

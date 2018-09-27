@@ -179,11 +179,11 @@ createRestaurantHTML = (restaurant) => {
   const image = document.createElement('img');
   image.className = 'restaurant-img';
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
-  image.alt = restaurant.name;
+  image.alt = restaurant.name + ' Restaurant';
   li.append(image);
 
   const name = document.createElement('h2');
-  name.innerHTML = restaurant.name + 'Restaurant';
+  name.innerHTML = restaurant.name;
   li.append(name);
 
   const neighborhood = document.createElement('p');

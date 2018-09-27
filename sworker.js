@@ -1,6 +1,7 @@
 const cacheVersion = 'v1';
 /**
  * Install the service worker
+ * Inspiration from: https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers
  */
 const cachedAssets = [
     './index.html',
@@ -21,6 +22,7 @@ const cachedAssets = [
     './assets/img/9.jpg',
     './assets/img/10.jpg'
 ];
+
 self.addEventListener('install', function (ev) {
     // Handle the cached objects
     ev.waitUntil(
@@ -50,13 +52,11 @@ self.addEventListener('activate', function (ev) {
         })
     );
 });
+
 // Get the site assets and cache for offline availability
-// self.addEventListener('fetch', ev => {
-//     ev.respondWith(
-//         fetch(ev.request).catch(() => caches.match(ev.request)));
-// });
+
 self.addEventListener('fetch', ev => {
-    console.log('Fetchind response data');
+    // Fetch the response data for offline caching
     ev.respondWith(
         fetch(ev.request)
         // Cache the response data instead of caching only some of the files
@@ -64,13 +64,14 @@ self.addEventListener('fetch', ev => {
             // We need to clone the resData
             const resDataClone = resData.clone();
             caches
-            .open(cacheVersion)
-            .then(cache => {
-                // Adding the resData to the cache
-                cache.put(ev.request, resDataClone);
-            });
+                .open(cacheVersion)
+                .then(cache => {
+                    // Adding the resData to the cache
+                    cache.put(ev.request, resDataClone);
+                });
             return resData;
         })
+        // Handle any error that might occur
         .catch(error = caches.match(ev.request).then(resData => resData))
     );
-})
+});

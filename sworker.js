@@ -54,24 +54,24 @@ self.addEventListener('activate', function (ev) {
 });
 
 // Get the site assets and cache for offline availability
-
 self.addEventListener('fetch', ev => {
-    // Fetch the response data for offline caching
     ev.respondWith(
-        fetch(ev.request)
-        // Cache the response data instead of caching only some of the files
-        .then(resData => {
-            // We need to clone the resData
-            const resDataClone = resData.clone();
-            caches
-                .open(cacheVersion)
-                .then(cache => {
-                    // Adding the resData to the cache
-                    cache.put(ev.request, resDataClone);
-                });
-            return resData;
+        caches.match(ev.request).then(resData => {
+            if (resData){
+                return resData;
+            } else {
+                return fetch(ev.request)
+                .then(resData => {
+                    const resDataClone = resData.clone();
+                    caches.open(cacheVersion).then(cache => {
+                        cache.put(ev.request, resDataClone);
+                    })
+                    return resData;
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+            }
         })
-        // Handle any error that might occur
-        .catch(error = caches.match(ev.request).then(resData => resData))
-    );
-});
+    )
+})
